@@ -22,28 +22,26 @@ func main() {
 
 	p = &i
 
-  // Since we referenced the p with i 
-  // Now the pointer points to the location of i.
-  // So everytime i changes we change the the value of p 
-  fmt.Println(p, *p, &p)
+	// Since we referenced the p with i
+	// Now the pointer points to the location of i.
+	// So everytime i changes we change the the value of p
+	fmt.Println(p, *p, &p)
 	fmt.Println("update i")
 	i = 20
-  
+
 	fmt.Println("the value of *p and i", *p, i)
 
-  // Another way of accessing the pointer is using slice
-  // Which is a golang way of saying dynamic array.
-  // BE CAREFUL WITH THE SLICES SINCE SLICECOPY IN GO JUST TAKE THE pointer
-  // SO UPDATING THE SLICE WILL RESULT IN UPDATING THE ORIGINAL
+	// Another way of accessing the pointer is using slice
+	// Which is a golang way of saying dynamic array.
+	// BE CAREFUL WITH THE SLICES SINCE SLICECOPY IN GO JUST TAKE THE pointer
+	// SO UPDATING THE SLICE WILL RESULT IN UPDATING THE ORIGINAL
 
+	k := []int{1, 2, 3}
 
+	// %T shows the type of the value that's put out of the variable.
+	// so p shows the *int32
+	// and *p shows the int32
 
-  k := []int{1,2,3}
-
-  // %T shows the type of the value that's put out of the variable.
-  // so p shows the *int32
-  // and *p shows the int32
-
-  fmt.Printf("k is %T %T\n", k, p)
-  fmt.Printf("k is %T %T\n", k, *p)
+	fmt.Printf("k is %T %T\n", k, p)
+	fmt.Printf("k is %T %T\n", k, *p)
 }
