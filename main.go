@@ -2,24 +2,24 @@ package main
 
 import (
 	"fmt"
-	"unicode/utf8"
+	"os"
 )
 
 func main() {
-	var intNum int8 = 127
-	// intNum += 0.2
-	fmt.Println(intNum)
+	const kumar = 10
+	arr := [2]string{"kumar", "our"}
+	// kumar = 11
+	fmt.Println(kumar, arr)
 
-	// kumar := 0.33333333333
-	ku := 2 / 3
-	ku1 := 1 / 3
-	fmt.Println(ku, ku1)
-
-	var kumaruu float64 = float64(intNum) + 0.5
-
-	fmt.Println(ku1+ku, kumaruu)
-	Stringoo := "🐜"
-
-	fmt.Println(len(Stringoo)) // this shows the len in BYTES
-	fmt.Println(utf8.RuneCountInString(Stringoo))
+	f, err := os.Open("filename.ext")
+	if err != nil {
+		fmt.Println("kumar", f)
+	}
+	if err != nil {
+		fmt.Printf("kumar oru po***.")
+	}
+	var number int
+	fmt.Println("What is your favorite number?")
+	fmt.Scan(&number)
+	fmt.Printf("Your favorite number is %d.\n", number)
 }
