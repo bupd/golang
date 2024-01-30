@@ -11,8 +11,12 @@ var (
 	dbData = []string{"id1", "id2", "id3", "id4", "id5", "id6"}
 )
 
-// Add variable to store the results.
-var results = []string{}
+var (
+	m  sync.Mutex
+	mu sync.RWMutex
+	// Add variable to store the results.
+	results = []string{}
+)
 
 // Actually waitgroup is nothing but telling goroutine how many threads are there.
 // that is go keyword before the func call.
@@ -34,7 +38,7 @@ func main() {
 
 	// The below line will wait till the goroutine gets completed.
 	fmt.Printf("\n Total execution time: %v \n", time.Since(t0))
-  fmt.Printf(" Results: %v \n", results)
+	fmt.Printf(" Results: %v \n", results)
 }
 
 func dbCall(i int) {
@@ -44,16 +48,20 @@ func dbCall(i int) {
 	// for that issue for writing only with one func at a time can be achieved by.
 	// creating a read or write in another func which handles that for us.
 	save(dbData[i], i)
-	// Llog()
+	m.Unlock()
+	Llog(i)
 	// fmt.Printf("hello world %s \n", dbData[i])
 	wg.Done()
 }
 
-// func Llog() {
-// 	panic("unimplemented")
-// }
+func Llog(i int) {
+	mu.RLock()
+	fmt.Printf("this is result at %d: %v \n", i, results)
+	mu.RUnlock()
+}
 
 func save(result string, i int) {
+	m.Lock()
 	results = append(results, dbData[i])
 	fmt.Printf("hello world %s \n", dbData[i])
 }
