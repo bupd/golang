@@ -5,6 +5,8 @@ import (
   "os"
 )
 
-func main()  {
+func kumar(times uint)  {
   fmt.Println(os.Args);
 }
+
+kumar(10);

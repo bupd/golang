@@ -1,3 +1,6 @@
+# github.com/google/uuid v1.6.0
+## explicit
+github.com/google/uuid
 # golang.org/x/text v0.0.0-20170915032832-14c0d48ead0c
 ## explicit
 golang.org/x/text/internal/tag
